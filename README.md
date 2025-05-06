@@ -28,6 +28,15 @@ def on_submit(change):
 
 input_box.observe(on_submit, names='value')
 display(input_box, output_box)
+
+
+conversation = ""
+while True:
+    user_input = input("You: ")
+    conversation += f"\nYou: {user_input}\nBot:"
+    response = generator(conversation, max_length=100, num_return_sequences=1)
+    print(response[0]['generated_text'])
+    conversation += response[0]['generated_text']
 <!---
 stunnersince2000/stunnersince2000 is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 You can click the Preview link to take a look at your changes.
